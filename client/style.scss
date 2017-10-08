@@ -1,0 +1,25 @@
+textarea {
+    resize: none;
+}
+
+.hide {
+    display: none;
+}
+
+#error {
+    background-color: #EF9A9A;
+}
+
+#success {
+    background-color: #A5D6A7;
+}
+
+#error, #success {
+    padding: .5em;
+    width: fit-content;
+    p {
+        margin: 0;
+        display: block;
+        width: fit-content;
+    }
+}
