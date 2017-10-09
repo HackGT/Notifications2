@@ -1,10 +1,42 @@
+@font-face {
+    font-family: KenneyFuture;
+    src: url(./fonts/KennyFuture.ttf);
+}
+
+@font-face {
+    font-family: Oswald;
+    font-weight: 400;
+    src: url(fonts/Oswald-Light.ttf);
+}
+
+@font-face {
+    font-family: Oswald;
+    font-weight: 500;
+    src: url(fonts/Oswald-Medium.ttf);
+}
+
+@mixin phone {
+    @media screen and (max-device-width: 360px) {
+        @content;
+    }
+}
+
 body {
     background-color: #081517;
     color: white;
+    font-family: 'Oswald', sans-serif;
+    @include phone {
+        font-size: 26px;
+    }
 }
 
 textarea {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
     resize: none;
+    height: auto;
+    font-size: 1.2em;
 }
 
 .hide {
@@ -19,7 +51,8 @@ textarea {
     background-color: #A5D6A7;
 }
 
-#error, #success {
+#error,
+#success {
     padding: .5em;
     width: fit-content;
     p {
@@ -32,21 +65,80 @@ textarea {
 .flexbox {
     display: flex;
     justify-content: center;
+    @include phone {
+        flex-direction: column;
+    }
 }
 
-h1,h2 {
-    color: #81CCC0
+h1,
+h2 {
+    color: #81CCC0;
+    font-family: KenneyFuture, monospace;
 }
 
 h1 {
     text-align: center;
+    @include phone {
+        font-size: 4em;
+    }
 }
 
-ul.endpoint-selector {
+ul#endpoint-selector {
     list-style: none;
     padding: 0;
-    li {
-        
+    width: fit-content;
+    margin: 0;
+    @include phone {
+        display: flex;
+        flex-wrap: wrap;
+        li {
+            flex-grow: 1
+        }
+    }
+    label {
+        display: block;
+        position: relative;
+        padding: .75em .5em .75em (2em + .5em);
+        background-color: #052e37;
+        border: 2px solid #052e37;
+        cursor: pointer;
+        user-select: none;
+        transition: background-color .2s, border .2s;
+        @include phone {
+            padding: .75em .5em .75em (1.5em + .5em);
+        }
+        img {
+            height: 1.25em;
+            left: .25em + (.75em/2);
+            top: .5em + (.75em/2);
+            position: absolute;
+            filter: grayscale(90%);
+            transition: filter .2s;
+            @include phone {
+                height: 2em;
+                left: .25em + (.75em/2);
+                top: 1em + (1.5em/2);
+            }
+        }
+    }
+    input {
+        opacity: 0;
+        position: absolute;
+    }
+    label:hover,
+    input:focus+label {
+        border: 2px solid lighten(#052e37, 5);
+    }
+    input:checked+label {
+        background-color: lighten(#052e37, 10);
+        border: 2px solid lighten(#052e37, 10);
+        img {
+            filter: grayscale(0%);
+        }
+    }
+    input:checked+label:hover,
+    input:checked:focus+label {
+        border: 2px solid lighten(#052e37, 15);
     }
 }
 
@@ -54,7 +146,16 @@ ul.endpoint-selector {
     background-color: #81CCC0;
     color: #081517;
     border: none;
-    padding: 1em 2em; 
+    padding: 1em 2em;
+    cursor: pointer;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    transition: background-color .2s;
+    font-size: 1em;
+    &:hover,
+    &:focus {
+        background-color: darken(#81CCC0, 10);
+    }
 }
 
 #charcount-wrapper {
@@ -62,6 +163,12 @@ ul.endpoint-selector {
     margin: .5em;
 }
 
-.container {
-    padding: 0 2em;
+#success,
+#error {
+    color: black;
+}
+
+.out,
+.notes {
+    margin-left: 1em;
 }
