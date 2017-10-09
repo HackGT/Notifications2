@@ -4,6 +4,6 @@
     },
 
     "server": {
-        "url": "http://128.61.105.86:3001"
+        "url": "http://notifications.dev.hack.gt"
     }
 }
