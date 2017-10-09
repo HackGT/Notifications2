@@ -1,3 +1,7 @@
+body {
+  background-color: #081517;
+  color: white; }
+
 textarea {
   resize: none; }
 
@@ -17,3 +21,30 @@ textarea {
     margin: 0;
     display: block;
     width: fit-content; }
+
+.flexbox {
+  display: flex;
+  justify-content: center; }
+
+h1, h2 {
+  color: #81CCC0; }
+
+h1 {
+  text-align: center; }
+
+ul.endpoint-selector {
+  list-style: none;
+  padding: 0; }
+
+#submit {
+  background-color: #81CCC0;
+  color: #081517;
+  border: none;
+  padding: 1em 2em; }
+
+#charcount-wrapper {
+  float: right;
+  margin: .5em; }
+
+.container {
+  padding: 0 2em; }

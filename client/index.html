@@ -5,83 +5,87 @@
     </head>
     <body>
         <h1>HackGT Notifications Portal</h1>
-        <div class="send-container">
-            <div id="error" class="hide">
-            </div>
-            <div id="success" class="hide">
-            </div>
-            <ul id="endpoint-selector">
-                <li>
-                    <label>
-                        <input type="checkbox" value="SLACK_ANNOUNCEMENTS"/>
-                        Slack to #announcements
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox" value="SLACK_MENTORS"/>
-                        Slack to #mentors
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox" value="SLACK_VOLUNTEERS"/>
-                        Slack to #volunteers
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox" value="TWITTER"/>
-                        Tweet #hackgt4
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox" value="PUSH"/>
-                        Push Notification live.hack.gt
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox" value="EMAIL_PARTICIPANTS"/>
-                        Email participants
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox" value="EMAIL_MENTORS"/>
-                        Email mentors
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox" value="EMAIL_VOLUNTEERS"/>
-                        Email volunteers
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox" value="FACEBOOK"/>
-                        Facebook Event Page
-                    </label>
-                </li>
-            </ul>
-            <textarea name="Message" id="message" cols="60" rows="10"></textarea>
-            <p>Character count: <span id="charcount">0</span>/131</p>
-
-            <button id="submit">Submit</button>
-            <div class="notes">
-                <h2>Notes</h2>
-                <ul>
-                    <li>Slack will automatically prepend '@here '</li>
-                    <li>Twitter will automatically append ' #hackgt4' to the end of tweets</li>
-                    <li>Twitter is disabled if character count is over 131</li>
+        <div class="flexbox">
+            <div class="plugin-container container">
+                <ul id="endpoint-selector">
+                    <li>
+                        <label>
+                            <input type="checkbox" value="SLACK_ANNOUNCEMENTS"/>
+                            Slack to #announcements
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" value="SLACK_MENTORS"/>
+                            Slack to #mentors
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" value="SLACK_VOLUNTEERS"/>
+                            Slack to #volunteers
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" value="TWITTER"/>
+                            Tweet #hackgt4
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" value="PUSH"/>
+                            Push Notification live.hack.gt
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" value="EMAIL_PARTICIPANTS"/>
+                            Email participants
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" value="EMAIL_MENTORS"/>
+                            Email mentors
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" value="EMAIL_VOLUNTEERS"/>
+                            Email volunteers
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" value="FACEBOOK"/>
+                            Facebook Event Page
+                        </label>
+                    </li>
                 </ul>
+                <div class="notes">
+                    <h2>Notes</h2>
+                    <ul>
+                        <li>Slack will automatically prepend '@here '</li>
+                        <li>Twitter will automatically append ' #hackgt4' to the end of tweets</li>
+                        <li>Twitter is disabled if character count is over 131</li>
+                    </ul>
+                </div>
             </div>
-        </div>
+            <div class="send-container container">
+                <textarea name="Message" id="message" cols="60" rows="10"></textarea>
+                <div>
+                    <p id="charcount-wrapper">Character count: <span id="charcount">0</span>/131</p>
 
+                    <button id="submit">Submit</button>
+                </div>
 
-        <div class="out-container">
+                <h2>Output</h2>
+                <div id="error" class="hide">
+                </div>
+                <div id="success" class="hide">
+                </div>
+            </div>
         </div>
 
         <script src="./app.js"></script>
