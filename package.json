@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./server/bin/www",
     "build-scss": "node-sass --watch ./client/style.scss -o ./client/",
-    "build-ts": "tsc --watch"
+    "build-ts": "tsc --watch",
+    "build": "node-sass ./client/style.scss -o ./client/ && tsc"
   },
   "dependencies": {
     "body-parser": "~1.17.1",

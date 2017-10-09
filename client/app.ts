@@ -7,7 +7,7 @@
     const error: HTMLDivElement = document.getElementById('error') as HTMLDivElement;
     const success: HTMLDivElement = document.getElementById('success') as HTMLDivElement;
 
-    function showError(err) {
+    function showError(err: any) {
         error.classList.remove('hide');
         const p = document.createTextNode('p');
         p.textContent = err;
@@ -15,7 +15,7 @@
         error.appendChild(p);
     }
 
-    function showSuccess(msg) {
+    function showSuccess(msg: any) {
         success.classList.remove('hide');
         const p = document.createElement('p');
         p.textContent = msg;
@@ -36,7 +36,7 @@
         hideStatus();
 
         // send all the requests
-        for(const input of inputs) {
+        for(const input of inputs as any) {
 
             if(input.value==='TWITTER' && message.value.length > 131) {
                 showError(`[Twitter]: Cannot tweet larger than 140 characters (including the #hackgt4)`)
@@ -64,7 +64,7 @@
                         throw res
                 })
                 .then(json=>console.log(json))
-                .catch(err => err.json().then(json=>{showError(`[${input.value}]: ${JSON.stringify(json)}`)}))
+                .catch(err => err.json().then((json: any)=>{showError(`[${input.value}]: ${JSON.stringify(json)}`)}))
             }
         }
     });
