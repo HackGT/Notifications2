@@ -17,11 +17,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// const auth = {};
-// auth[process.env.user] = process.env.password;
+const auth = {};
+auth[process.env.user] = process.env.password;
 
 app.use(basicAuth({
-   users: {'admin': 'password'},
+   users: auth,
    challenge: true,
    realm: 'Imb4T3st4pp'
 }));
