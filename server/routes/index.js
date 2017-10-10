@@ -10,39 +10,13 @@ const corsOptions = {
   optionsSuccessStatus: 200
 }
 
+router.get('/', function(req,res,next) {
+  res.sendFile(path.resolve(__dirname, '../public/index.html'));
+});
+
 /* GET home page. */
 // router.post('/postMessage', cors(corsOptions), function(req, res, next) {
 router.post('/postMessage', function (req, res, next) {
-
-
-  // Handle API Token Auth
-  const auth = req.headers.authorization;
-  if (!auth) {
-    res.statusCode = 401;
-    res.end('Unauthorized');
-    return;
-  }
-  let parts;
-  if (typeof auth == 'string')
-    parts = auth.split(' ');
-  else if (Array.isArray(auth))
-    parts = auth[0];
-
-  if (parts.length !== 2) return res.sendStatus(400);
-
-  const scheme = parts[0];
-  const credentials = new Buffer(parts[1], 'base64').toString();
-  const index = credentials.indexOf(':');
-
-  if ('Basic' != scheme || index < 0) return res.sendStatus(400);
-
-  const user = credentials.slice(0, index);
-  const pass = credentials.slice(index + 1);
-
-  if (user !== process.env.user || pass !== process.env.password) {
-    res.statusCode = 401;
-    res.end('Unauthorized');
-  }
 
   const {
     message,
@@ -86,7 +60,7 @@ router.post('/postMessage', function (req, res, next) {
       }
       res.json({
         message: 'Success',
-        response
+        body: response.body
       });
     }
   });
