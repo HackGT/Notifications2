@@ -38,8 +38,8 @@
         // send all the requests
         for(const input of inputs as any) {
 
-            if(input.value==='TWITTER' && message.value.length > 131) {
-                showError(`[Twitter]: Cannot tweet larger than 140 characters (including the #hackgt4)`)
+            if(input.value==='TWITTER' && message.value.length > 132) {
+                showError(`[Twitter]: Cannot tweet larger than 140 characters (including the #hackgt)`)
                 continue;
             }
 
@@ -58,12 +58,25 @@
                 })
                 .then(res=> {
                     if(res.ok) {
-                        showSuccess(`[${input.value}]: Success`)
                         return res.json()
                     } else
                         throw res
                 })
-                .then(json=>console.log(json))
+                .then(json=>{
+                    console.log(json);
+                    let bool = true;
+                    for(const message in json.body) {
+                        const val = JSON.parse(json.body[message]);
+                        if(val.ok === false) {
+                            bool = false;
+                            showError(`[${input.value}]: ${JSON.stringify(val)}`);
+                        }
+                    }
+
+                    if(bool) {
+                        showSuccess(`[${input.value}]: Success`);
+                    }
+                })
                 .catch(err => err.json().then((json: any)=>{showError(`[${input.value}]: ${JSON.stringify(json)}`)}))
             }
         }

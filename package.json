@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./server/bin/www",
-    "build-scss": "node-sass --watch ./client/style.scss -o ./client/",
+    "build-scss": "node-sass --watch ./server/public/style.scss -o ./server/public/",
     "build-ts": "tsc --watch",
-    "build": "node-sass ./client/style.scss -o ./client/ && tsc"
+    "build": "node-sass ./server/public/style.scss -o ./server/public/ && tsc"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
@@ -16,6 +16,7 @@
     "cors": "^2.8.4",
     "debug": "~2.6.3",
     "express": "~4.15.2",
+    "express-basic-auth": "^1.1.2",
     "helmet": "^3.8.2",
     "jade": "~1.11.0",
     "morgan": "~1.8.1",
