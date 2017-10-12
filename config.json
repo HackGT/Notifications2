@@ -1,9 +1,0 @@
-{
-    "api": {
-        "url": "https://pipes.dev.hack.gt"
-    },
-
-    "server": {
-        "url": "http://notifications.dev.hack.gt"
-    }
-}

@@ -3,14 +3,13 @@ const path = require('path');
 const request = require('request');
 const router = express.Router();
 const cors = require('cors');
-const config = require('../../config.json');
 
 const corsOptions = {
-  origin: config.server.url,
+  origin: process.env.server_url,
   optionsSuccessStatus: 200
 }
 
-router.get('/', function(req,res,next) {
+router.get('/', function (req, res, next) {
   res.sendFile(path.resolve(__dirname, '../public/index.html'));
 });
 
@@ -31,8 +30,15 @@ router.post('/postMessage', function (req, res, next) {
     return;
   }
 
+  console.log(JSON.stringify({
+    hackgtmetricsversion: 1,
+    serviceName: 'hackgt4-notifications-app',
+    values: {value: 1},
+    tags: {type}
+  }));
+
   request.post({
-    url: `${config.api.url}/api/HackGT4/${type}`,
+    url: `${process.env.pipes_url}/api/HackGT4/${type}`,
     body: {
       message: {
         data: message

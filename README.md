@@ -6,3 +6,6 @@ api_secret
 api_id  
 user  
 password
+PORT
+pipes_url
+server_url

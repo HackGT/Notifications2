@@ -16,9 +16,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.get('/ping', function (req, res) {
+  res.send('pong')
+});
 
 const auth = {};
 auth[process.env.user] = process.env.password;
+
 
 app.use(basicAuth({
    users: auth,
