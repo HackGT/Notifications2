@@ -5,7 +5,7 @@
 api_secret  
 api_id  
 user  
-password
-PORT
-pipes_url
+password  
+PORT  
+ROOT_URL  
 server_url

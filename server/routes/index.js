@@ -5,7 +5,7 @@ const router = express.Router();
 const cors = require('cors');
 
 const corsOptions = {
-  origin: process.env.server_url,
+  origin: process.env.ROOT_URL,
   optionsSuccessStatus: 200
 }
 
