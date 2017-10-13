@@ -30,6 +30,13 @@ router.post('/postMessage', function (req, res, next) {
     });
     return;
   }
+  
+  console.log(JSON.stringify({
+      hackgtmetricsversion: 1,
+      serviceName: 'hackgt4-notifications-app',
+      values: {value: 1},
+      tags: {type}
+  }));
 
   request.post({
     url: `${config.api.url}/api/HackGT4/${type}`,
