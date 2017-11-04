@@ -55,7 +55,7 @@
                         message: message.value,
                         type: input.value
                     })
-                })
+                } as any)
                 .then(res=> {
                     if(res.ok) {
                         return res.json()
